@@ -6,18 +6,25 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      if item.name == "Sulfuras, Hand of Ragnaros"
-        Sulfuras.new(item).update_quality
-      elsif item.name == 'Aged Brie'
-        AgedBrie.new(item).update_quality
-      elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
-        Backstage.new(item).update_quality
-      else
-        Generic.new(item).update_quality
-      end
+      item.update_quality
     end
   end
+
+  # def update_quality
+  #   @items.each do |item|
+  #     if item.name == "Sulfuras, Hand of Ragnaros"
+  #       Sulfuras.new(item).update_quality
+  #     elsif item.name == 'Aged Brie'
+  #       AgedBrie.new(item).update_quality
+  #     elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
+  #       Backstage.new(item).update_quality
+  #     else
+  #       Generic.new(item).update_quality
+  #     end
+  #   end
+  # end
 end
+
 
 class Sulfuras
   attr_reader :item
