@@ -6,46 +6,46 @@ require File.join(File.dirname(__FILE__), 'gilded_rose')
 
 class GildedRoseTest < Minitest::Test
 
-  # def test_generic_item_decrease_quality
-  #   items = [Item.new("foo", 1, 1)]
-  #   assert_equal items[0].quality, 1
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].name, "foo"
-  #   assert_equal items[0].quality, 0
-  # end
-  #
-  # def test_generic_item_min_quality_0
-  #   items = [Item.new("foo", 1, 1)]
-  #   assert_equal items[0].quality, 1
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].name, "foo"
-  #   assert_equal items[0].sell_in, 0
-  #   assert_equal items[0].quality, 0
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].name, "foo"
-  #   assert_equal items[0].sell_in, -1
-  #   assert_equal items[0].quality, 0
-  # end
-  #
-  # def test_generic_item_decrease_sell_in
-  #   items = [Item.new("foo", 1, 1)]
-  #   assert_equal items[0].sell_in, 1
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].name, "foo"
-  #   assert_equal items[0].sell_in, 0
-  # end
-  #
-  # def test_generic_item_loses_double_quality_passed_sell_in
-  #   items = [Item.new("foo", 1, 10)]
-  #   assert_equal items[0].sell_in, 1
-  #   assert_equal items[0].quality, 10
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].sell_in, 0
-  #   assert_equal items[0].quality, 9
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].sell_in, -1
-  #   assert_equal items[0].quality, 7
-  # end
+  def test_generic_item_decrease_quality
+    items = [Item.new("foo", 1, 1)]
+    assert_equal items[0].quality, 1
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].name, "foo"
+    assert_equal items[0].quality, 0
+  end
+
+  def test_generic_item_min_quality_0
+    items = [Item.new("foo", 1, 1)]
+    assert_equal items[0].quality, 1
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].name, "foo"
+    assert_equal items[0].sell_in, 0
+    assert_equal items[0].quality, 0
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].name, "foo"
+    assert_equal items[0].sell_in, -1
+    assert_equal items[0].quality, 0
+  end
+
+  def test_generic_item_decrease_sell_in
+    items = [Item.new("foo", 1, 1)]
+    assert_equal items[0].sell_in, 1
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].name, "foo"
+    assert_equal items[0].sell_in, 0
+  end
+
+  def test_generic_item_loses_double_quality_passed_sell_in
+    items = [Item.new("foo", 1, 10)]
+    assert_equal items[0].sell_in, 1
+    assert_equal items[0].quality, 10
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].sell_in, 0
+    assert_equal items[0].quality, 9
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].sell_in, -1
+    assert_equal items[0].quality, 7
+  end
 
   def test_aged_brie_item_increase_quality_max_50
     items = [Item.new("Aged Brie", 4, 48)]
@@ -152,13 +152,13 @@ class GildedRoseTest < Minitest::Test
     assert_equal items[0].quality, 50
   end
 
-  # def test_sulfuras_does_not_decrease_sell_in_or_quality
-  #   items = [Item.new("Sulfuras, Hand of Ragnaros", 2, 10)]
-  #   assert_equal items[0].sell_in, 2
-  #   assert_equal items[0].quality, 10
-  #   GildedRose.new(items).update_quality()
-  #   assert_equal items[0].sell_in, 2
-  #   assert_equal items[0].quality, 10
-  # end
+  def test_sulfuras_does_not_decrease_sell_in_or_quality
+    items = [Item.new("Sulfuras, Hand of Ragnaros", 2, 10)]
+    assert_equal items[0].sell_in, 2
+    assert_equal items[0].quality, 10
+    GildedRose.new(items).update_quality()
+    assert_equal items[0].sell_in, 2
+    assert_equal items[0].quality, 10
+  end
 
 end
