@@ -4,48 +4,21 @@ class GildedRose
     @items = items
   end
 
-  def update_quality()
+  def update_quality
     @items.each do |item|
-      if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"
-        if item.quality > 0 && item.name != "Sulfuras, Hand of Ragnaros"
-          item.quality -= 1
-        end
+      item.sell_in -= 1
+      if item.name == 'Aged Brie'
+        item.quality += 1 unless item.quality >= 50
+      elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
+        
+      elsif item.name == "Sulfuras, Hand of Ragnaros"
       else
-        if item.quality < 50
-          item.quality += 1
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
-            if item.sell_in < 11
-              item.quality += 1
-            end
-            if item.sell_in < 6
-              item.quality += 1
-            end
-          end
-        end
-      end
-      if item.name != "Sulfuras, Hand of Ragnaros"
-        item.sell_in -= 1
-      end
-      if item.sell_in < 0
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.quality > 0
-              if item.name != "Sulfuras, Hand of Ragnaros"
-                item.quality -= 1
-              end
-            end
-          else
-            item.quality = 0
-          end
-        else
-          if item.quality < 50
-            item.quality += 1
-          end
-        end
       end
     end
   end
 end
+
+
 
 class Item
   attr_accessor :name, :sell_in, :quality
@@ -60,3 +33,8 @@ class Item
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
+
+##steps
+## 1) write tests
+# 2) shorten if/else statements
+# 3) rewrite GildedRose sorted by item type
