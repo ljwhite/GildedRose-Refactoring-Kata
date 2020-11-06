@@ -10,7 +10,16 @@ class GildedRose
       if item.name == 'Aged Brie'
         item.quality += 1 unless item.quality >= 50
       elsif item.name == "Backstage passes to a TAFKAL80ETC concert"
-        
+        item.quality += 1 unless item.quality >= 50
+        if item.sell_in < 10
+          item.quality += 1 unless item.quality >= 50
+        end
+        if item.sell_in < 5
+          item.quality += 1 unless item.quality >= 50
+        end
+        if item.sell_in < 0
+          item.quality = 0
+        end
       elsif item.name == "Sulfuras, Hand of Ragnaros"
       else
       end
